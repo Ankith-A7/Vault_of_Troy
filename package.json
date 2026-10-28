@@ -1,0 +1,24 @@
+{
+  "name": "vault-of-troy-simply-secure",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "setup": "npm run db:init --workspace vault-of-troy-backend",
+    "dev": "concurrently -k -n API,WEB -c blue,green \"npm run dev --workspace vault-of-troy-backend\" \"npm run dev --workspace vault-of-troy-frontend\"",
+    "start:backend": "npm run start --workspace vault-of-troy-backend",
+    "start:frontend": "npm run dev --workspace vault-of-troy-frontend",
+    "build": "npm run build --workspace vault-of-troy-frontend",
+    "test": "npm run test --workspace vault-of-troy-backend",
+    "check": "npm run lint:syntax --workspace vault-of-troy-backend && npm run build --workspace vault-of-troy-frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
